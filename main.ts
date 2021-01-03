@@ -130,7 +130,7 @@ namespace NFC {
         serial.writeBuffer(cmdUID);
         basic.pause(50);
         receivedLen = RxBufferedSize();
-        if (receivedLen == 25) {
+        if (receivedLen > 25) {  //if (receivedLen == 25) {
             receivedBuffer = serial.readBuffer(25);
             for (let i = 0; i < 4; i++) {
                 uid[i] = receivedBuffer[19 + i];
