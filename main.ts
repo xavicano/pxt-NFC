@@ -104,7 +104,7 @@ namespace NFC {
                 uidBuffer = [uid[0], uid[1], uid[2], uid[3]];
             }
             return convertString(uidBuffer, 4);
-        } else if (receivedLen == 29) {   // To read UID of 8 bytes MIFARE Ultralight
+        } else if (receivedLen > 25) {   // To read UID of 8 bytes MIFARE Ultralight
             for (let i = 0; i < 7; i++) {
                 uid[i] = receivedBuffer[19 + i];
             }
@@ -130,7 +130,7 @@ namespace NFC {
         serial.writeBuffer(cmdUID);
         basic.pause(50);
         receivedLen = RxBufferedSize();
-        if (receivedLen > 25) {  //if (receivedLen == 25) {
+        if (receivedLen >= 25) {  //if (receivedLen == 25) {
             receivedBuffer = serial.readBuffer(25);
             for (let i = 0; i < 4; i++) {
                 uid[i] = receivedBuffer[19 + i];
