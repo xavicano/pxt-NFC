@@ -112,7 +112,7 @@ namespace NFC {
             if (uid[0] == uid[1] && uid[1] == uid[2] && uid[2] == uid[3] && uid[3] == 0xFF) {
                 return "";
             } else {
-                uidBuffer = [uid[0], uid[1], uid[2], uid[3], uid[4], uid[5], uid[6], uid[7]];
+                uidBuffer = [uid[0], uid[1], uid[2], uid[3], uid[4], uid[5], uid[6]];
             }
             return convertString(uidBuffer, 8);
         } else {
