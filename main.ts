@@ -105,6 +105,7 @@ namespace NFC {
             }
             return convertString(uidBuffer, 4);
         } else if (receivedLen > 25) {   // To read UID of 8 bytes MIFARE Ultralight
+            receivedBuffer = serial.readBuffer(29);
             for (let i = 0; i < 7; i++) {
                 uid[i] = receivedBuffer[19 + i];
             }
