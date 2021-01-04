@@ -119,6 +119,40 @@ namespace NFC {
             return "";
         }
     }
+    //% blockId="getUID" block="RFID UID string"
+    export function readblock(blockNumber: number, dataBlock: number[]): string {
+        let myStr = "";
+        let blockNumber = 0;
+        serial.setRxBufferSize(100)
+        wakeup();
+        let myBuffer: number[] = []
+        let dataBlock =""
+        //[PREAMBLE 0x00, 
+        //START oF PACKET 0x00 0xFF, 
+        //NUM OF BYTES 0x04, from TFI+DATA
+        //LCS = Lower byte of LEN + LCS=0x00, 
+        //TFI =0xD4, 
+        //DATA, 
+        //Packet DAta Checksum DCS=TFI+DATAn+DCS=0x00, 
+        //POSTAMBLE=0x00]
+        // myBuffer = [0x00, 0x00, 0xFF, 0x04, 0xFC, 0xD4, 0x4A, 0x01, 0x00, 0xE1, 0x00]
+        myBuffer = [0x00, 0x00, 0xFF, 0x04, 0xFC, 0xD4, 0x40, 0x01, 0x30]
+        mybuffer[9]=blockNumber
+        mybuffer[10]=0xBB           // CheckSum
+        mybuffer[11]=0x00           //POSTAMBLE
+        let cmdRead = pins.createBufferFromArray(myBuffer)
+        serial.writeBuffer(cmdRead);
+        basic.pause(50);
+        receivedLen = RxBufferedSize();
+        if (receivedLen > 25) {
+            receivedBuffer = serial.readBuffer(receivedLen);
+            for (let i = 0; i < receivedLen; i++) {
+                dataBlock += getHexStr(receivedBuffer[16 + i]);
+            }
+        } else {
+            return "";
+        }
+    }
 
     //% weight=70
     //% blockId="detectedRFIDcard" block="Detected RFID card?"
