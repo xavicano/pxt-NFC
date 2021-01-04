@@ -124,6 +124,7 @@ namespace NFC {
         serial.setRxBufferSize(100)
         wakeup();
         let myBuffer: number[] = []
+        let dataBlock=""
         //[PREAMBLE 0x00, 
         //START oF PACKET 0x00 0xFF, 
         //NUM OF BYTES 0x04, from TFI+DATA
