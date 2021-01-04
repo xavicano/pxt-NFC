@@ -120,7 +120,7 @@ namespace NFC {
         }
     }
     //% blockId="getUID" block="RFID UID string"
-    export function readblock(blockNumber: number, dataBlock: string): string {
+    export function readblock(blockNumber: number): string {
         serial.setRxBufferSize(100)
         wakeup();
         let myBuffer: number[] = []
