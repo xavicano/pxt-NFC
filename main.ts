@@ -147,7 +147,7 @@ namespace NFC {
         //if (receivedLen > 25) {
             receivedBuffer = serial.readBuffer(receivedLen);
             for (let i = 0; i < 25; i++) {
-                dataBlock += convertString((receivedBuffer[16 + i],1);
+                dataBlock += convertString(receivedBuffer[16 + i],1);
             }
             return dataBlock;
         //} else {
