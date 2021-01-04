@@ -119,7 +119,8 @@ namespace NFC {
             return "";
         }
     }
-    //% blockId="getUID" block="RFID UID string"
+    //% weight=80
+    //% blockId="readblock" block="RFID Read Data"
     export function readblock(blockNumber: number): string {
         serial.setRxBufferSize(100)
         wakeup();
