@@ -146,11 +146,10 @@ namespace NFC {
         receivedLen = RxBufferedSize();
         //if (receivedLen > 25) {
             receivedBuffer = serial.readBuffer(receivedLen);
-            for (let i = 0; i < receivedLen; i++) {
+            for (let i = 0; i < 25; i++) {
                 dataBlock += getHexStr(receivedBuffer[16 + i]);
             }
-         //   return dataBlock;
-        return receivedBuffer;
+            return dataBlock;
         //} else {
         //    return "";
         //}
