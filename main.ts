@@ -147,10 +147,10 @@ namespace NFC {
         receivedLen = RxBufferedSize();
         //if (receivedLen > 25) {
             receivedBuffer = serial.readBuffer(receivedLen);
-            for (let i = 0; i < 25; i++) {
+            for (let i = 0; i < 16; i++) {
                 uid[i]= receivedBuffer[16 + i];
             }
-            dataBuffer = [uid[0], uid[1], uid[2], uid[3], uid[4], uid[5], uid[6],uid[7],uid[7],uid[8],uid[9],uid[10],uid[11], uid[12], uid[13], uid[14], uid[15]];
+            dataBuffer = [uid[0], uid[1], uid[2], uid[3], uid[4], uid[5], uid[6],uid[7],uid[8],uid[9],uid[10],uid[11], uid[12], uid[13], uid[14], uid[15]];
             return convertString(dataBuffer,16) ;
         //} else {
         //    return "";
