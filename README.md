@@ -4,8 +4,8 @@
 This is the NFC blocks
 
 ## Author
-Liou Zheng-Ji and some minors from Xavier Cano
-劉正吉\
+Liou Zheng-Ji and some minors from Xavier Cano\
+劉正吉  還有 Xavier Cano  的一些細節 \
 [my page, https://sites.google.com/jes.mlc.edu.tw/ljj/](https://sites.google.com/jes.mlc.edu.tw/ljj/)
 
 ## Description
