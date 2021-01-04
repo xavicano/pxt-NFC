@@ -149,6 +149,7 @@ namespace NFC {
             for (let i = 0; i < receivedLen; i++) {
                 dataBlock += getHexStr(receivedBuffer[16 + i]);
             }
+            return dataBlock;
         } else {
             return "";
         }
