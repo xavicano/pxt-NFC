@@ -160,7 +160,7 @@ namespace NFC {
             return convertString(dataBuffer,16) ;
         } else {
             //return "";
-            return convertString(myBuffer[10],1);
+            return getHexStr(myBuffer[10]);
         }
     }
 
