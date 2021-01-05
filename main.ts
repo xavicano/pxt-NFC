@@ -158,10 +158,10 @@ namespace NFC {
             }
             //dataBuffer = [uid[0], uid[1], uid[2], uid[3], uid[4], uid[5], uid[6],uid[7],uid[8],uid[9],uid[10],uid[11], uid[12], uid[13], uid[14], uid[15]];
             //return convertString(dataBuffer,16) ;
-            return getHexStr(myBuffer[10]);
+            return convertString(myBuffer,12) ;
         } else {
             //return "";
-            return getHexStr(myBuffer[10]);
+            return convertString(myBuffer,12) ;
         }
     }
 
