@@ -163,7 +163,7 @@ namespace NFC {
                 dataBuffer = [uid[0], uid[1], uid[2], uid[3], uid[4], uid[5], uid[6]];
             }
             return convertString(dataBuffer, 7);
-         }  
+         }  else{return "";}
         
         
         //if (receivedLen > 20) {
