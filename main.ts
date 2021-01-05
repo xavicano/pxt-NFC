@@ -145,7 +145,7 @@ namespace NFC {
             myBuffer[10]+= myBuffer[5 + i];
         } 
         myBuffer[10]=(~myBuffer[10]) & 0xFF
-        serial.writeValue("Checksum = ", checksum)
+        //serial.writeValue("Checksum = ", checksum)
         myBuffer[11]=0x00           //POSTAMBLE
         let cmdRead = pins.createBufferFromArray(myBuffer)
         serial.writeBuffer(cmdRead);
@@ -157,7 +157,8 @@ namespace NFC {
                 dataBuffer[i]= receivedBuffer[16 + i];
             }
             //dataBuffer = [uid[0], uid[1], uid[2], uid[3], uid[4], uid[5], uid[6],uid[7],uid[8],uid[9],uid[10],uid[11], uid[12], uid[13], uid[14], uid[15]];
-            return convertString(dataBuffer,16) ;
+            //return convertString(dataBuffer,16) ;
+            return getHexStr(myBuffer[10]);
         } else {
             //return "";
             return getHexStr(myBuffer[10]);
