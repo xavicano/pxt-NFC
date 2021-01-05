@@ -128,6 +128,7 @@ namespace NFC {
         let myBuffer: number[] = []
         let dataBuffer: number[] = []
         let dataBlock=""
+        let checksum:number=0
         //[PREAMBLE 0x00, 
         //START oF PACKET 0x00 0xFF, 
         //NUM OF BYTES 0x04, from TFI+DATA
@@ -137,9 +138,14 @@ namespace NFC {
         //Packet DAta Checksum DCS=TFI+DATAn+DCS=0x00, 
         //POSTAMBLE=0x00]
         // myBuffer = [0x00, 0x00, 0xFF, 0x04, 0xFC, 0xD4, 0x4A, 0x01, 0x00, 0xE1, 0x00]
-           myBuffer = [0x00, 0x00, 0xFF, 0x05, 0xFC, 0xD4, 0x40, 0x01, 0x30]
+           myBuffer = [0x00, 0x00, 0xFF, 0x04, 0xFC, 0xD4, 0x40, 0x01, 0x30]
         myBuffer[9]=blockNumber
-        myBuffer[10]=0xBB           // CheckSum
+        myBuffer[10]=myBuffer[2]           // CheckSum
+        for (let i = 0; i < myBuffer[9]; i++) {
+            myBuffer[10]+= myBuffer[5 + i];
+        } 
+        myBuffer[10]=(~myBuffer[10]) & 0xFF
+        serial.writeLine(checksum)
         myBuffer[11]=0x00           //POSTAMBLE
         let cmdRead = pins.createBufferFromArray(myBuffer)
         serial.writeBuffer(cmdRead);
