@@ -152,7 +152,7 @@ namespace NFC {
         basic.pause(50);
         receivedLen = RxBufferedSize();
         //if (receivedLen > 20) {
-            receivedBuffer = serial.readBuffer(26);
+            receivedBuffer = serial.readBuffer(25);
             for (let i = 0; i < 16; i++) {
                 dataBuffer[i]= receivedBuffer[8 + i];
             }
