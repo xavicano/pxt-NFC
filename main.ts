@@ -151,7 +151,7 @@ namespace NFC {
         serial.writeBuffer(cmdRead);
         basic.pause(50);
         receivedLen = RxBufferedSize();
-        if (receivedLen > 20) {
+        //if (receivedLen > 20) {
             receivedBuffer = serial.readBuffer(26);
             for (let i = 0; i < 16; i++) {
                 dataBuffer[i]= receivedBuffer[8 + i];
@@ -159,10 +159,10 @@ namespace NFC {
             //dataBuffer = [uid[0], uid[1], uid[2], uid[3], uid[4], uid[5], uid[6],uid[7],uid[8],uid[9],uid[10],uid[11], uid[12], uid[13], uid[14], uid[15]];
             return convertString(dataBuffer,16) ;
             //return convertString(myBuffer,12) ;
-        } else {
+        //} else {
             //return "";
-            return convertString(myBuffer,12) ;
-        }
+        //    return convertString(myBuffer,12) ;
+        //}
     }
 
     //% weight=70
