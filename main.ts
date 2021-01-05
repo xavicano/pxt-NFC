@@ -145,7 +145,7 @@ namespace NFC {
             myBuffer[10]+= myBuffer[5 + i];
         } 
         myBuffer[10]=(~myBuffer[10]) & 0xFF
-        serial.writeLine(checksum)
+        serial.writeValue("Checksum = ", checksum)
         myBuffer[11]=0x00           //POSTAMBLE
         let cmdRead = pins.createBufferFromArray(myBuffer)
         serial.writeBuffer(cmdRead);
