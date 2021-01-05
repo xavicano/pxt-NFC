@@ -138,7 +138,8 @@ namespace NFC {
         //Packet DAta Checksum DCS=TFI+DATAn+DCS=0x00, 
         //POSTAMBLE=0x00]
         // myBuffer = [0x00, 0x00, 0xFF, 0x04, 0xFC, 0xD4, 0x4A, 0x01, 0x00, 0xE1, 0x00]
-           myBuffer = [0x00, 0x00, 0xFF, 0x04, 0xFC, 0xD4, 0x40, 0x01, 0x30]
+        //   myBuffer = [0x00, 0x00, 0xFF, 0x04, 0xFC, 0xD4, 0x40, 0x01, 0x30]
+        myBuffer = [0x00, 0x00, 0xFF, 0x04, 0xFC, 0xD4, 0x40, 0x01, 0x00]
         myBuffer[9]=blockNumber
         myBuffer[10]=myBuffer[2]  +  myBuffer[5]       // CheckSum
         for (let i = 0; i < myBuffer[3]; i++) {
@@ -149,9 +150,9 @@ namespace NFC {
         myBuffer[11]=0x00           //POSTAMBLE
         let cmdRead = pins.createBufferFromArray(myBuffer)
         serial.writeBuffer(cmdRead);
-        basic.pause(50);
+        basic.pause(52);
         receivedLen = RxBufferedSize();
-        
+        return(getHexStr(receivedLen));
         if (receivedLen > 20) {
             receivedBuffer = serial.readBuffer(25);
             for (let i = 0; i < 16; i++) {
