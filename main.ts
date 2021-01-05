@@ -149,7 +149,7 @@ namespace NFC {
         myBuffer[11]=0x00           //POSTAMBLE
         let cmdRead = pins.createBufferFromArray(myBuffer)
         serial.writeBuffer(cmdRead);
-        basic.pause(52);
+        basic.pause(520);
         receivedLen = RxBufferedSize();
         return(getHexStr(receivedLen));
         if (receivedLen > 20) {
